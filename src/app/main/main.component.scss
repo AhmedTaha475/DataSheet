@@ -1,0 +1,42 @@
+
+
+#main{
+    min-height: 100vh;
+    width: 100%;
+    
+}
+table {
+    color: white;
+    thead{
+        tr{
+            th{
+            border: solid 1px black;
+               padding: 0 40px;
+              
+            }
+        }
+    }
+    tbody{
+        tr{
+            
+            td{
+                border: solid 1px black;
+                padding: 0;
+                div{
+                    resize: both;
+                    overflow: auto;
+                    input{
+                    
+                        width: 100%;
+                        height: 100%;
+                        border: none;
+                        margin: 0;
+                        padding: 0;
+                        
+                    }
+                }
+               
+            }
+        }
+    }
+}

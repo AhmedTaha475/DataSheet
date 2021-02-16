@@ -1,0 +1,53 @@
+<!--Entery sections-->
+<section id="main" class="m-auto  text-white">
+    <div class="container-fluid pt-3" *ngIf="!flag">
+        <form [formGroup]="sheetDataForm" (ngSubmit)="create()">
+            <div class="form-group">
+                <label for="">Enter No of Rows</label>
+                <input type="number" class="form-control w-25" formControlName="sheetRows" placeholder="rows">
+            </div>
+            <div class="form-group ">
+                <label for="">Enter No of Cols</label>
+                <input type="number" class="form-control w-25" formControlName="sheetCols" placeholder="cols">
+            </div>
+            <div class="form-group ">
+                <label for="">Enter No of Cols</label>
+                <input type="text" class="form-control w-25" formControlName="sheetName" placeholder="SheetName">
+            </div>
+
+            <button class="btn btn-info mt-4">generate sheet</button>
+
+
+
+        </form>
+    </div>
+
+
+
+
+    <form [formGroup]="cellData" class="py-5 " (ngSubmit)="send()">
+        <h3 class="text-center ">{{mySheetName}}</h3>
+        <table class="table " *ngIf="flag">
+            <thead>
+                <tr class="overflow-scroll ">
+                    <th></th>
+                    <th *ngFor="let item of  sheetColoums" class="text-center">{{item.cols}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of sheetRows2;let j=index">
+                    <td class="text-center">{{item.rows}}</td>
+                    <td *ngFor="let item of sheetColoums;let i=index">
+                        <div>
+                            <input formControlName="data" id="{{j+1}}{{i+1}}" type="text"
+                                (keyup)="typing($event,i+1,j+1)">
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+        <button class="btn btn-primary ml-2" *ngIf="flag">Save Data</button>
+        <button class="btn btn-primary mx-3" (click)="NewSheet()" *ngIf="flag">New Sheet</button>
+    </form>
+</section>
